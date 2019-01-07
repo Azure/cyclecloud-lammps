@@ -2,6 +2,7 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License.
 HOMEDIR=$(jetpack config cuser.home_dir)
+CLUSTER_OWNER=$( jetpack config cuser.name ) 
 
 set -ex
 # Don't run if we've already expanded the LAMMPS tarball
@@ -17,3 +18,9 @@ popd
 
 cp ${CYCLECLOUD_SPEC_PATH}/files/run_lammps.sh ${HOMEDIR}
 cp ${CYCLECLOUD_SPEC_PATH}/files/run_lammps_mpi.sh ${HOMEDIR}
+
+chown $CLUSTER_OWNER:$CLUSTER_OWNER ${HOMEDIR}/run_lammps.sh
+chown $CLUSTER_OWNER:$CLUSTER_OWNER ${HOMEDIR}/run_lammps_mpi.sh
+
+chmod +x ${HOMEDIR}/run_lammps.sh
+chmod +x ${HOMEDIR}/run_lammps_mpi.sh
