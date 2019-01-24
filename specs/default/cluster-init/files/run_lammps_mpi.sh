@@ -1,6 +1,6 @@
 #!/bin/bash
 #PBS -j oe
-#PBS -l nodes=2:ppn=16
+#PBS -l select=2:ncpus=16
 LAMMPS_BIN=/shared/scratch/lammps/lmp_intel_cpu_intelmpi
 INPUT=/shared/scratch/lammps/in.dipole
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/shared/scratch/lammps/libs
